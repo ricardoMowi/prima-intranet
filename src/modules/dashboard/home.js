@@ -3,8 +3,6 @@ import axios from 'axios'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Collapsible from 'react-collapsible';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styled, { css } from 'styled-components'
 import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap'
@@ -37,10 +35,7 @@ function Home() {
         });
         console.log(user);
     }
-    const handleChangePassword = (event, {value}) => {
-        setPassword(value);
-        console.log(passwordConfirm);
-    }
+
     const peticionGet = async ()=>{
         await axios.get("http://localhost:8080/client/getClient/"+id)
         .then(response=>{
@@ -118,28 +113,34 @@ function Home() {
                         </button>
                       </Col>
                       <Col className="col-md-3 col-sm-3 ">
-                        <Card> 
+                        <button onClick={() => modalStatus()} style={{border:'none'}}>
+                            <Card>
                             <b>Jubilación por régimen pesquero</b>
                             <br></br>
                             Pensión que puedes obtener si trabajas en pesca
-                        </Card>
+                            </Card>
+                        </button>
                       </Col>
                       {user.clientType == "PERSON" &&
                       <>
                         <Col className="col-md-3 col-sm-3 ">
-                        <Card> 
-                            <b>Pensión complementaria de pensión mínima</b>
-                            <br></br>
-                            Obtén el pago complementario si tienes este beneficio
-                        </Card>
+                            <button onClick={() => modalStatus()} style={{border:'none'}}>
+                                <Card>
+                                <b>Pensión complementaria de pensión mínima</b>
+                                <br></br>
+                                Obtén el pago complementario si tienes este beneficio
+                                </Card>
+                            </button>
                         </Col>
                         <Col className="col-md-3 col-sm-3 ">
-                        <Card> 
-                            <b>Pensión mínima de jubilación</b>
-                            <br></br>
-                            Pensión que puedes obtener si trabajas en pesca
-                        </Card>
-                        </Col>   
+                            <button onClick={() => modalStatus()} style={{border:'none'}}>
+                                <Card>
+                                <b>Pensión mínima de jubilación</b>
+                                <br></br>
+                                Pensión que puedes obtener si trabajas en pesca
+                                </Card>
+                            </button>
+                        </Col>  
                       </>
 
                       }

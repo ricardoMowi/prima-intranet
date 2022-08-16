@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap'
-import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styled, { css } from 'styled-components'
 import axios from 'axios'
