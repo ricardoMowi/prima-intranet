@@ -7,6 +7,29 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import styled, { css } from 'styled-components'
 import axios from 'axios'
 
+const Button = styled.button`
+background: #EE6430;
+border-radius: 3px;
+border: 2px solid palevioletred;
+color: WHITE;
+margin: 0.5em 1em;
+padding: 0.25em 1em;
+`;
+
+const DivForm = styled.div`
+padding-bottom: 10px;
+`;
+const DivGroup = styled.div`
+padding-top: 20px;
+padding-bottom: 20px;
+`;
+const DivHeader = styled.div`
+padding-bottom: 10px;
+`;
+const CardPrincipal = styled.div`
+padding: 35px;
+`;
+
 function Profile() {
     const navigate = useNavigate();
     const id = "62943f5d0b8aac48a4a52862";
@@ -76,109 +99,104 @@ function Profile() {
         peticionGet();
     }, [])   
     
-    const Button = styled.button`
-        background: #EE6430;
-        border-radius: 3px;
-        border: 2px solid palevioletred;
-        color: WHITE;
-        margin: 0.5em 1em;
-        padding: 0.25em 1em;
-    `;
 
-   
 
     return (
         <div className="row">
 
-            <Card >
-                <Card.Title>Datos del usuario</Card.Title>
-                <Card.Title style={{color: '#EE6430'}}>Editar perfil</Card.Title>
-
-                    <div className="form-horizontal " >
-                            <Row className="item form-group col-md-12 col-sm-12">
-                                    <Col> <label className="col-form-label col-md-4 col-sm-4 label-align"  >Full Name </label>  </Col>
+            <CardPrincipal className="card" >
+                    <DivHeader className="form-horizontal " >
+                        <h5 style={{fontSize: '1.0rem'}}>Datos del usuario</h5>
+                        <h4 style={{color: '#EE6430'}}>Editar perfil</h4>
+                    </DivHeader>
+                    <DivGroup className="form-horizontal " >
+                            <DivForm className="item form-group col-md-12 col-sm-12 row">
+                                    <Col style={{textAlign: 'right'  }}> <label>Full Name </label>  </Col>
                                     <Col className="col-md-4 col-sm-4 ">
                                         <input type="text" id="name" name="name" required="required" className="form-control" onChange={handleChange} value={user.name} placeholder='First' />
                                     </Col>
                                     <Col className="col-md-4 col-sm-4 ">
                                         <input type="text" id="lastName" name="lastName" required="required" className="form-control" onChange={handleChange}  value={user.lastName}  placeholder='Last Name' />
                                     </Col>
-                            </Row>  
+                            </DivForm>  
 
-                            <Row className="item form-group col-md-12 col-sm-12">
-                                    <Col> <label className="col-form-label col-md-4 col-sm-4 label-align"  >Company Name </label></Col>
+                            <DivForm className="item form-group col-md-12 col-sm-12 row">
+                                    <Col style={{textAlign: 'right'  }}> <label >Company Name </label></Col>
                                     <Col className="col-md-8 col-sm-8 ">
                                         <input type="text" id="companyName" name="companyName" required="required" className="form-control" onChange={handleChange} readOnly />
                                     </Col>
-                            </Row>  
+                            </DivForm>  
 
-                            <Row className="item form-group col-md-12 col-sm-12">
-                                    <Col> <label className="col-form-label col-md-4 col-sm-4 label-align"  >Email address </label></Col>
+                            <DivForm className="item form-group col-md-12 col-sm-12 row">
+                                    <Col style={{textAlign: 'right'  }}> <label >Email address </label></Col>
                                     <Col className="col-md-8 col-sm-8 ">
                                         <input type="text" id="email" name="email" required="required" className="form-control" onChange={handleChange}  value={user.email}  />
                                     </Col>
-                            </Row>                         
-                    </div>
+                            </DivForm>                         
+                    </DivGroup>
 
-                    <div className="form-horizontal " >
-                            <Row className="item form-group col-md-12 col-sm-12">
-                                    <Col> <label className="col-form-label col-md-4 col-sm-4 label-align"  >Address </label></Col>
+                    <DivGroup className="form-horizontal " >
+                            <DivForm className="item form-group col-md-12 col-sm-12 row">
+                                    <Col style={{textAlign: 'right'  }}> <label >Address </label></Col>
                                     <Col className="col-md-8 col-sm-8 ">
                                         <input type="text" id="address" name="address" required="required" className="form-control" onChange={handleChange}  value={user.address}  />
                                     </Col>
-                            </Row>  
+                            </DivForm>  
 
-                            <Row className="item form-group col-md-12 col-sm-12">
-                                    <Col> <label className="col-form-label col-md-4 col-sm-4 label-align"  >Optional </label> </Col>
+                            <DivForm className="item form-group col-md-12 col-sm-12 row">
+                                    <Col style={{textAlign: 'right'  }}> <label >Optional </label> </Col>
                                     <Col className="col-md-8 col-sm-8 ">
                                         <input type="text" id="optional" name="optional" required="required" className="form-control" onChange={handleChange} readOnly />
                                     </Col>
-                            </Row>  
+                            </DivForm>  
 
-                            <Row className="item form-group col-md-12 col-sm-12">
-                                    <Col><label className="col-form-label col-md-4 col-sm-4 label-align"  >City</label> </Col>
+                            <DivForm className="item form-group col-md-12 col-sm-12 row">
+                                    <Col style={{textAlign: 'right'  }}> <label >City</label> </Col>
                                     <Col className="col-md-8 col-sm-8 ">
                                         <input type="text" id="city" name="city" required="required" className="form-control" onChange={handleChange}  readOnly />
                                     </Col>
-                            </Row>           
+                            </DivForm>           
 
-                            <Row className="item form-group col-md-12 col-sm-12">
-                                    <Col><label className="col-form-label col-md-4 col-sm-4 label-align"  >Type of client </label></Col>
+                            <DivForm className="item form-group col-md-12 col-sm-12 row">
+                                    <Col style={{textAlign: 'right'  }}> <label >Type of client </label></Col>
                                     <Col className="select-container col-md-8 col-sm-8 ">
                                         <select className="form-control"  name="clientType"  value={user.clientType} onChange={handleChange}>
                                             {options.map((option) => (
-                                            <option value={option.value}>{option.label}</option>
+                                            <option key={option.value} value={option.value}>{option.label}</option>
                                             ))}
                                         </select>
                                     </Col>
-                            </Row>  
+                            </DivForm>  
 
-                            <Row className="item form-group col-md-12 col-sm-12">
-                                    <Col><label className="col-form-label col-md-4 col-sm-4 label-align"  >State/ Province</label></Col>
+                            <DivForm className="item form-group col-md-12 col-sm-12 row">
+                                    <Col style={{textAlign: 'right'  }}> <label >State/ Province</label></Col>
                                     <Col className="col-md-8 col-sm-8 ">
                                         <input type="text" id="state" name="state" required="required" className="form-control" onChange={handleChange}  readOnly/>
                                     </Col>
-                            </Row>   
+                            </DivForm>   
                         
-                    </div>
+                    </DivGroup>
 
-                    <div className="form-horizontal "  >
-                        <h4>Account</h4>
-                        <h4>Other preferences</h4>
-                        <Row className="item form-group col-md-12 col-sm-12">
-                                    <Col><label className="col-form-label col-md-3 col-sm-3 label-align"  >Password </label></Col>
+                    <DivGroup className="form-horizontal "  >
+                        <DivHeader className="form-horizontal " >
+                            <h4>Account</h4>
+                            <h5 style={{fontSize: '1.0rem'}}>Other preferences</h5>                            
+                        </DivHeader>
+
+                        <DivForm className="item form-group col-md-12 col-sm-12 row">
+                                    <Col style={{textAlign: 'right'  }}> <label >Password </label></Col>
                                     <Col className="col-md-4 col-sm-4 ">
                                         <input type="password" id="password" name="ruc" required="required" className="form-control" onChange={handleChange} placeholder='Password' value={user.ruc} />
                                     </Col>
                                     <Col className="col-md-4 col-sm-4 ">
                                         <input type="password" id="password1" name="passwordConfirm" required="required" className="form-control" onChange={handleChange} placeholder='Confirm password' value={user.passwordConfirm} />
                                     </Col>
-                        </Row> 
-                    </div>
+                        </DivForm> 
+                    </DivGroup>
 
-            </Card>
-            <div>
-                <Button variant="primary" type="submit" onClick={()=>updateProfile()}>Guardar</Button>
+            </CardPrincipal>
+            <div style={{display: 'flex',  justifyContent: 'center'}}>
+                <Button variant="primary" type="submit" onClick={()=>updateProfile()} >Guardar</Button>
             </div>
             
         </div>    

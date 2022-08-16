@@ -67,7 +67,7 @@ const Sidebar = ({children}) => {
         <div className="container" style={{ margin: '0px', padding: '0px'}} >
            <div style={{width: isOpen ? "350px" : "50px"}} className="sidebar">
                <div className="top_section">
-                   <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Prima</h1>
+                   <h1 style={{display: isOpen ? "block" : "none"}} className="logo">PRIMA  </h1>
                    <div style={{marginLeft: isOpen ? "150px" : "0px"}} className="bars">
                        <FaBars onClick={toggle}/>
                    </div>
@@ -83,7 +83,19 @@ const Sidebar = ({children}) => {
                    ))
                }
            </div>
-           <main>{children}</main>
+           <main className="main">          
+                <div className="container-fluid" >
+                    <div className="ui-view">
+                    <div>
+                        <div className="animated fadeIn">
+                        {children}
+                        </div>
+                    </div>
+                    </div>
+                </div>
+           </main>
+
+          
         </div>
     );
 };

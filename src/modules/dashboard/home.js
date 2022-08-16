@@ -8,6 +8,26 @@ import styled, { css } from 'styled-components'
 import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap'
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
+const DivHeader = styled.div`
+padding-bottom: 30px;
+`;
+const CardPrincipal = styled.div`
+padding: 35px;
+`;
+const DivBannerText = styled.div`
+display: flex;
+align-items: revert;
+justify-content: center;
+flex-direction: column;
+padding-left: 40px;
+padding-right: 30px;
+`;
+const CardClickable = styled.div`
+padding-top: 20px;
+padding-bottom: 20px;
+padding-left: 20px;
+padding-right: 20px;
+`;
 
 function Home() {
     const navigate = useNavigate();
@@ -67,86 +87,76 @@ function Home() {
         }                
     }
     
-    const Button = styled.button`
-        background: #EE6430;
-        border-radius: 3px;
-        border: 2px solid palevioletred;
-        color: WHITE;
-        margin: 0.5em 1em;
-        padding: 0.25em 1em;
-    `;
-
-   
-
     return (
         <div className="row">
+            <div className="card" >
+                <CardPrincipal >                
+                    <DivHeader className="form-horizontal " >
+                            <h5 style={{fontSize: '1.0rem'}}>Nueva solicitud de trámite</h5>
+                            <h4 style={{color: '#EE6430'}}>Trámites que puedes realizar</h4>
+                            <h5 style={{fontSize: '1.0rem'}}>Para el afiliado: <b style={{color: '#EE6430', fontSize: '1.0rem'}}>{user.name + ' '+ user.lastName}</b> </h5> 
+                    </DivHeader>
+                    <div className="form-horizontal " style={{backgroundColor: '#f0fbf9'}} >
+                        <Row className="item form-group col-md-12 col-sm-12">
+                                <Col className="col-md-4 col-sm-4 "> 
+                                    <img src={require('./img1.png')} />
+                                </Col>    
+                                <DivBannerText className="col-md-8 col-sm-8 col" >
+                                    <b style={{fontSize: '2.0rem'}}>Por jubilación y retiro 95.5%</b>
+                                    <br></br>
+                                    {description} 
+                                </DivBannerText>
+                        </Row>                        
+                    </div>
 
-            <Card >
-                <h5>Nueva solicitud de trámite</h5>
-                <Card.Title style={{color: '#EE6430'}}>Trámites que puedes realizar</Card.Title>
-                <h5>Para el afiliado: <b style={{color: '#EE6430'}}>{user.name + ' '+ user.lastName}</b> </h5> 
+                </CardPrincipal>
 
-                <div className="form-horizontal " style={{backgroundColor: '#f0fbf9'}} >
+                <CardPrincipal >
+                    <DivHeader className="form-horizontal " >
+                            <h5 style={{fontSize: '1.0rem', color: 'rgb(138 188 179)'}}>Otras pensiones </h5>
+                    </DivHeader>
                     <Row className="item form-group col-md-12 col-sm-12">
-                            <Col className="col-md-4 col-sm-4 "> 
-                                <img src={require('./img1.png')} />
-                            </Col>    
-                            <Col className="col-md-8 col-sm-8 " >
-                                <b>Por jubilación y retiro 95.5%</b>
-                                <br></br>
-                                {description} 
-                            </Col>
-                    </Row>                        
-                </div>
-
-            </Card>
-
-            <Card >
-                <Row className="item form-group col-md-12 col-sm-12">
-                      <Col className="col-md-3 col-sm-3 ">
-                        <button onClick={() => modalStatus()} style={{border:'none'}}>
-                            <Card> 
-                                <b>Fondo complementario de jubilación minera</b>
-                                <br></br>
-                                Obtén el pago complementario si tienes este beneficio
-                            </Card>
-                        </button>
-                      </Col>
-                      <Col className="col-md-3 col-sm-3 ">
-                        <button onClick={() => modalStatus()} style={{border:'none'}}>
-                            <Card>
-                            <b>Jubilación por régimen pesquero</b>
-                            <br></br>
-                            Pensión que puedes obtener si trabajas en pesca
-                            </Card>
-                        </button>
-                      </Col>
-                      {user.clientType == "PERSON" &&
-                      <>
                         <Col className="col-md-3 col-sm-3 ">
-                            <button onClick={() => modalStatus()} style={{border:'none'}}>
-                                <Card>
-                                <b>Pensión complementaria de pensión mínima</b>
-                                <br></br>
-                                Obtén el pago complementario si tienes este beneficio
-                                </Card>
+                            <button onClick={() => modalStatus()} style={{border:'none'}} className="btn-block">
+                                <CardClickable className="card "> 
+                                    <b>Fondo complementario de jubilación minera</b>                                   
+                                    Obtén el pago complementario si tienes este beneficio
+                                </CardClickable>
                             </button>
                         </Col>
                         <Col className="col-md-3 col-sm-3 ">
-                            <button onClick={() => modalStatus()} style={{border:'none'}}>
-                                <Card>
-                                <b>Pensión mínima de jubilación</b>
-                                <br></br>
+                            <button onClick={() => modalStatus()} style={{border:'none'}} className="btn-block">
+                                <CardClickable className="card "> 
+                                <b>Jubilación por régimen pesquero</b>
                                 Pensión que puedes obtener si trabajas en pesca
-                                </Card>
+                                </CardClickable>
                             </button>
-                        </Col>  
-                      </>
+                        </Col>
+                        {user.clientType == "PERSON" &&
+                        <>
+                            <Col className="col-md-3 col-sm-3 ">
+                                <button onClick={() => modalStatus()} style={{border:'none'}} className="btn-block">
+                                    <CardClickable className="card "> 
+                                    <b>Pensión complementaria de pensión mínima</b>
+                                    Obtén el pago complementario si tienes este beneficio
+                                    </CardClickable>
+                                </button>
+                            </Col>
+                            <Col className="col-md-3 col-sm-3 ">
+                                <button onClick={() => modalStatus()} style={{border:'none'}}>
+                                    <CardClickable className="card "> 
+                                    <b>Pensión mínima de jubilación</b>
+                                    Pensión que puedes obtener si trabajas en pesca
+                                    </CardClickable>
+                                </button>
+                            </Col>  
+                        </>
 
-                      }
-                 
-                </Row>     
-            </Card>
+                        }
+                    
+                    </Row>     
+                </CardPrincipal>
+            </div>
 
             <Modal isOpen={modalPass} >
                 <ModalHeader>
