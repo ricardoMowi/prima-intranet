@@ -6,6 +6,11 @@ import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styled, { css } from 'styled-components'
 import axios from 'axios'
+import Wizard from '../../components/wizard'
+
+
+import ReactGA from "react-ga";
+
 
 const Button = styled.button`
 background: #EE6430;
@@ -73,10 +78,29 @@ function Profile() {
         )
     }
 
+    const UseAnalyticsEventTracker = (category="Blog category") => {
+        const eventTracker = (action = "test action", label = "test label") => {
+          ReactGA.event({category, action, label});
+        }
+        return eventTracker;
+      }
+    
+      const eventTrack = (category, action, label) => {
+        console.log("GA event:", category, ":", action, ":", label);
+        ReactGA.event({
+          category: category,
+          action: action,
+          value: user.email,
+          label: label,
+        })
+      }
+
     const updateProfile = () =>{
         console.log('update::::', user);
+        eventTrack('profile screen', 'update data' ,'button');
         if(user.ruc == user.passwordConfirm){
             peticionPut();
+
         }else{
             alert('Contraseñas erróneas')
         }
@@ -104,6 +128,8 @@ function Profile() {
     return (
         <div className="row">
 
+            <Wizard/>
+            
             <CardPrincipal className="card" >
                     <DivHeader className="form-horizontal " >
                         <h5 style={{fontSize: '1.0rem'}}>Datos del usuario</h5>
@@ -197,7 +223,7 @@ function Profile() {
             </CardPrincipal>
             <div style={{display: 'flex',  justifyContent: 'center'}}>
                 <Button variant="primary" type="submit" onClick={()=>updateProfile()} >Guardar</Button>
-            </div>
+            </div>            
             
         </div>    
 

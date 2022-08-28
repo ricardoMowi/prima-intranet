@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styled, { css } from 'styled-components'
 import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap'
+//import { useContextUser} from './../../context/user-context'
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 const DivHeader = styled.div`
@@ -32,6 +33,7 @@ padding-right: 20px;
 function Home() {
     const navigate = useNavigate();
     const id = "62943f5d0b8aac48a4a52862";
+    //const {user} = useContextUser ();
     const [user, setUser] = useState({
         id: '',
         name: '',
